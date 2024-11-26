@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_import_invoice_wizard_header_form" model="ir.ui.view">
+            <field name="name">import.invoice.wizard.header.form</field>
+            <field name="model">import.invoice.wizard.header</field>
+            <field name="arch" type="xml">
+                <form string="Import Invoice Wizard Header">
+                    <sheet>
+                        <notebook>
+                            <page string="Facturas a importar" name="order_lines">
+
+                                <field name="invoice_wizard_line_ids" widget="section_and_note_one2many"
+                                       string="Líneas de Facturas" readonly="1" mode="tree,form">
+                                    <tree string="Invoice Lines" editable="bottom">
+                                        <field name="serie" decoration-danger="error != False"/>
+                                        <field name="folio" decoration-danger="error != False"/>
+                                        <field name="rfc_emisor" decoration-danger="error != False"/>
+                                        <field name="rfc_receptor" decoration-danger="error != False"/>
+                                        <field name="uuid" decoration-danger="error != False"/>
+                                        <field name="total" decoration-danger="error != False"/>
+                                        <field name="error" decoration-danger="error != False"/>
+                                    </tree>
+                                    <form>
+                                        <sheet>
+                                            <group>
+                                                <group>
+                                                    <field name="serie" readonly="1" force_save="1"/>
+                                                    <field name="folio" readonly="1" force_save="1"/>
+                                                    <field name="rfc_emisor" readonly="1" force_save="1"/>
+                                                    <field name="rfc_receptor" readonly="1" force_save="1"/>
+                                                    <field name="uuid" readonly="1" force_save="1"/>
+                                                    <field name="total" readonly="1" force_save="1"/>
+                                                    <field name="error" readonly="1" force_save="1"/>
+                                                </group>
+                                                <group>
+                                                    <field name="data_create" readonly="1" force_save="1"/>
+                                                    <field name="file_xml" filename="name_xml" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" readonly="1" force_save="1"/>
+                                                    <field name="name_xml" invisible="1"/>
+                                                    <field name="file_pdf" filename="name_pdf" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" readonly="1" force_save="1"/>
+                                                    <field name="name_pdf" invisible="1"/>
+                                                </group>
+                                            </group>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                        <footer>
+                            <button string="Importar facturas correctas" type="object" class="btn-primary" name="action_save"/>
+                            <button string="Cancel" class="btn-secondary" special="cancel"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>
