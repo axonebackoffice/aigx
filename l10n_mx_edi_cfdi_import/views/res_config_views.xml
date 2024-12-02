@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="res_config_settings_inv_global_form" model="ir.ui.view">
+        <field name="name">res.config.settings.inv.global.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@id='invoicing_settings']" position="after">
+                <h2>Importacion de CFDI</h2>
+                <div class="row mt16 o_settings_container" id="invoicing_settings">
+                    <div class="col-12 col-lg-6 o_setting_box">
+
+
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Crear productos</span>
+                            <div class="text-muted">
+                                Si este esta marcado creara los productos no encontrados
+                            </div>
+                            <div class="mt16">
+                                <div class="content-group" id="send_default">
+                                    <div>
+                                        <field name="cfdi_import_create_products"/>
+                                        <label for="cfdi_import_create_products"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('cfdi_import_create_products', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <label for="cfdi_import_detailed_type"/>
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="cfdi_import_detailed_type" class="o_light_label" attrs="{'required':[('cfdi_import_create_products', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" attrs="{'invisible': [('cfdi_import_create_products', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <label for="cfdi_import_categ_id"/>
+                            <div class="content-group">
+                                <div class="mt16">
+                                    <field name="cfdi_import_categ_id" class="o_light_label" attrs="{'required':[('cfdi_import_create_products', '=', True)]}"
+                                           options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </xpath>
+
+        </field>
+    </record>
+
+
+</odoo>

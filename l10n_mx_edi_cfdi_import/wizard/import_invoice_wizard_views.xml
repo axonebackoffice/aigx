@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_import_invoice_wizard" model="ir.ui.view">
+            <field name="name">import.invoice.wizard.form</field>
+            <field name="model">import.invoice.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Importar Facturas">
+                    <group>
+                        <field name="type" required="1"/>
+                        <field name="payment_reference"/>
+                        <field name="company_id" invisible="1"/>
+                        <field name="journal_permitted_ids" invisible="1"/>
+                        <field name="journal_id" required="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
+                        <field name="line_account_id" domain="[('deprecated', '=', False), ('account_type', 'not in', ('asset_receivable', 'liability_payable')), ('company_id', '=', company_id), ('is_off_balance', '=', False)]" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
+                        <field name="file" filename="file_name" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
+                        <field name="file_name" invisible="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
+                        <field name="create_missing_customers" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
+                    </group>
+                    <footer>
+                        <button string="Confirmar" type="object" name="confirm_action" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_import_invoice_wizard" model="ir.actions.act_window">
+            <field name="name">Importar Facturas</field>
+            <field name="res_model">import.invoice.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_import_invoice_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- Menú vinculado a la acción -->
+        <menuitem id="menu_import_invoice"
+                  name="Importar Facturas"
+                  parent="account_accountant.menu_accounting"
+                  action="action_import_invoice_wizard"/>
+    </data>
+</odoo>
