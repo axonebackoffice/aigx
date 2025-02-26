@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="attendance_timesheet_category">
+        <field name="name">Permisos Asistencias</field>
+        <field name="description">Permisos Asistencias</field>
+        <field name="sequence">1</field>
+    </record>
+
+
+    <record id="attendance_timesheet_group" model="res.groups">
+        <field name="name">Agregar hoja de horas</field>
+        <field name="category_id" ref="attendance_timesheet_category"/>
+        <field name="comment">Agregar hoja de horas</field>
+    </record>
+
+</odoo>
