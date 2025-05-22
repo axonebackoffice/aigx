@@ -32,7 +32,7 @@ class zkCreateUser(models.TransientModel):
     def create_users_zk(self):
         machine_ip = self.machine_id.name
         port = self.machine_id.port
-        zk = ZK(machine_ip, port=port, timeout=10, password=0, force_udp=False, ommit_ping=False)
+        zk = ZK(machine_ip, port=port, timeout=10, password=0, force_udp=False, ommit_ping=True)
         conn = ''
         employee_location_line=self.env['zk.employee.location.line']
         for employee in self.employee_ids:

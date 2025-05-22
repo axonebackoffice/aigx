@@ -120,7 +120,7 @@ class ZK(object):
     """
     ZK main class
     """
-    def __init__(self, ip, port=4370, timeout=60, password=0, force_udp=False, ommit_ping=False, verbose=False, encoding='UTF-8'):
+    def __init__(self, ip, port=4370, timeout=60, password=0, force_udp=False, ommit_ping=True, verbose=False, encoding='UTF-8'):
         """
         Construct a new 'ZK' object.
 
