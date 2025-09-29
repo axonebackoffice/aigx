@@ -71,8 +71,13 @@ class zkMachineInherit(models.Model):
         )
 
         # Agrupar por `user_id`
-        grouped_attendances = {user_id: list(group) for user_id, group in
-                               groupby(filtered_and_sorted, key=lambda x: x.user_id)}
+        grouped_attendances = {}
+        for attendance in filtered_and_sorted:
+            if attendance.user_id not in grouped_attendances:
+                grouped_attendances[attendance.user_id] = []
+
+            grouped_attendances[attendance.user_id].append(attendance)
+
 
         # Crear tuplas de 2 objetos por grupo de `user_id`
         grouped_pairs = {}
