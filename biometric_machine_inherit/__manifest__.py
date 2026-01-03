@@ -2,7 +2,7 @@
 
 {
     'name': 'Biometric Device Integration Inheritance',
-    'version': '16.0.0.1',
+    'version': '19.0.0.1',
     'category': 'stock',
     'author': 'Ing. Alejandro Garcia Magaña',
     'website': '',

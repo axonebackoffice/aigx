@@ -33,12 +33,12 @@
 				<notebook >
 					<page string="Employees">
 						<field name="employee_ids" context="{'machine_id':id}">
-							<tree>
+							<list>
 								<field name="name"/>
 								<field name="zknumber"/>
 								<button name="delete_employee_zk" type="object" icon="fa-times-circle" groups="hr_biometric_machine_zk.group_zk_manager" context="{'machine_id':parent.id}" confirm="Surely you want to delete the employee of the zkteco device?" help="Delete employee of zkteco device."/>
 								<button name="disassociate_employee_zk" type="object" icon="fa-chain-broken" groups="hr_biometric_machine_zk.group_zk_manager" context="{'machine_id':parent.id}" confirm="Are you sure you want to unlink the zkteco user from your system?" help="Unlink a zkteco user from the device created on his odoo system."/>
-							</tree>
+							</list>
 						</field>
 					</page> 
 				</notebook>
@@ -47,15 +47,15 @@
 		</field>
 	</record>
 
-	<record id="view_zk_machine_tree" model="ir.ui.view">
-		<field name="name">zk.machine.tree</field>
+	<record id="view_zk_machine_list" model="ir.ui.view">
+		<field name="name">zk.machine.list</field>
 		<field name="model">zk.machine</field>
-		<field name="type">tree</field>
+		<field name="type">list</field>
 		<field name="arch" type="xml">
-			<tree string="Zk Machine">
+			<list string="Zk Machine">
 				<field name="name"/>
 				<field name="location_id"/>
-			</tree>
+			</list>
 		</field>
 	</record>
 
@@ -68,14 +68,14 @@
                 <xpath expr="//field[@name='pin']" position="after">
 					<field name="zknumber"/>
 				 </xpath>
-				 <xpath expr="//page[@name='public']" position="after">
+				 <xpath expr="//notebook" position="inside">
 				 	<page string="ZK Number &amp; Location">
 				 		<field name="zk_location_line_ids">
-				 			<tree create="0" delete="0" edit="0">
+				 			<list create="0" delete="0" edit="0">
 				 				<field name="machine_id"/>
 				 				<field name="zk_num"/>
 				 				<field name="employee_id" invisible="1"/>
-				 			</tree>
+				 			</list>
 				 			<form create="0" delete="0" edit="0">
 								<group>
 									<field name="machine_id"/>
@@ -93,21 +93,21 @@
 		<field name="name">Attendances</field>
 		<field name="res_model">zk.machine</field>
 		<field name="type">ir.actions.act_window</field>
-		<field name="view_mode">tree,form</field>
+		<field name="view_mode">list,form</field>
 	</record>
 
 	<menuitem id="zk_machine_menu" name="Zk machine" parent="hr.menu_hr_root" action="attendance_machine_action" sequence="20" />
 
-	<record id="view_attendance_tree_inherit" model="ir.ui.view">
-        <field name="name">hr.attendance.tree.inherit</field>
+	<record id="view_attendance_list_inherit" model="ir.ui.view">
+        <field name="name">hr.attendance.list.inherit</field>
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
         <field name="arch" type="xml">
             <data>
-                 <tree position="attributes">
+                 <list position="attributes">
                     <attribute name="decoration-danger">check_in==False or check_out==False</attribute>
                     <attribute name="decoration-success">check_in!=False and check_out!=False</attribute>
-                 </tree>
+                 </list>
             </data>
         </field>
     </record>

@@ -11,8 +11,8 @@
                             <page string="Facturas a importar" name="order_lines">
 
                                 <field name="invoice_wizard_line_ids" widget="section_and_note_one2many"
-                                       string="Líneas de Facturas" readonly="1" mode="tree,form">
-                                    <tree string="Invoice Lines" editable="bottom">
+                                       string="Líneas de Facturas" readonly="1" mode="list,form">
+                                    <list string="Invoice Lines" editable="bottom">
                                         <field name="serie" decoration-danger="error != False"/>
                                         <field name="folio" decoration-danger="error != False"/>
                                         <field name="rfc_emisor" decoration-danger="error != False"/>
@@ -20,7 +20,7 @@
                                         <field name="uuid" decoration-danger="error != False"/>
                                         <field name="total" decoration-danger="error != False"/>
                                         <field name="error" decoration-danger="error != False"/>
-                                    </tree>
+                                    </list>
                                     <form>
                                         <sheet>
                                             <group>

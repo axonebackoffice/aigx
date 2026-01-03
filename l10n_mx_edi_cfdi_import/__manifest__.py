@@ -2,7 +2,7 @@
 
 {
     'name': 'Importacion CFDI facturas MX',
-    'version': '16.0.0.1',
+    'version': '19.0.0.1',
     'category': 'account',
     'author': 'Ing. Alejandro Garcia Magaña',
     'website': '',
@@ -11,8 +11,9 @@
 
     'depends': [
         'account',
+        'accountant',
         'account_accountant',
-        'l10n_mx_edi_40',
+        'l10n_mx_edi',
     ],
     'data': [
         'security/import_invoice_security.xml',

@@ -47,10 +47,10 @@ class ImportInvoiceWizardHeader(models.TransientModel):
 
         return {
             'name': _('Facturas creadas'),
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'res_model': 'account.move',
             'search_view_id': [self.env.ref('account.view_account_move_filter').id, 'search'],
-            'views': [(self.env.ref('account.view_move_tree').id, 'tree'), (False, 'form')],
+            'views': [(self.env.ref('account.view_move_tree').id, 'list'), (False, 'form')],
             'type': 'ir.actions.act_window',
             'domain': [('id', 'in', facturas.ids)],
             'context': dict(self._context, create=False),

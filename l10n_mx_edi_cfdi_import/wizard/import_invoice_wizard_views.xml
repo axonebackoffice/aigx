@@ -12,7 +12,7 @@
                         <field name="company_id" invisible="1"/>
                         <field name="journal_permitted_ids" invisible="1"/>
                         <field name="journal_id" required="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
-                        <field name="line_account_id" domain="[('deprecated', '=', False), ('account_type', 'not in', ('asset_receivable', 'liability_payable')), ('company_id', '=', company_id), ('is_off_balance', '=', False)]" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
+                        <field name="line_account_id" domain="[('account_type', 'not in', ('asset_receivable', 'liability_payable')), ('company_ids', 'in', company_id)]" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
                         <field name="file" filename="file_name" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
                         <field name="file_name" invisible="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
                         <field name="create_missing_customers" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" required="1"/>
@@ -36,7 +36,7 @@
         <!-- Menú vinculado a la acción -->
         <menuitem id="menu_import_invoice"
                   name="Importar Facturas"
-                  parent="account_accountant.menu_accounting"
+                  parent="accountant.menu_accounting"
                   action="action_import_invoice_wizard"/>
     </data>
 </odoo>

@@ -10,10 +10,10 @@
 						<field name="machine_id" invisible="0"/>
 						<field name="type"/>
 						<field name="employee_ids">
-                            <tree>
+                            <list>
                                 <field name="name"/>
                                 <field name="zknumber"/>
-                            </tree>
+                            </list>
                         </field>
 					</group>
 					<footer>

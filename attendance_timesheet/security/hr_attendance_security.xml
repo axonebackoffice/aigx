@@ -6,10 +6,16 @@
         <field name="sequence">1</field>
     </record>
 
+    <record model="res.groups.privilege" id="res_groups_privilege_attendances_timesheet">
+        <field name="name">Permisos Asistencias</field>
+        <field name="category_id" ref="attendance_timesheet_category"/>
+        <field name="sequence">7</field>
+    </record>
+
 
     <record id="attendance_timesheet_group" model="res.groups">
         <field name="name">Agregar hoja de horas</field>
-        <field name="category_id" ref="attendance_timesheet_category"/>
+        <field name="privilege_id" ref="res_groups_privilege_attendances_timesheet"/>
         <field name="comment">Agregar hoja de horas</field>
     </record>
 
